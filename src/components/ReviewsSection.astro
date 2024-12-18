@@ -1,0 +1,302 @@
+---
+const reviews = [
+  {
+    author: "Анна Смирнова",
+    rating: 5,
+    date: "15.03.2024",
+    text: "Отличный курс! ИИ-наставник действительно помогает освоить материал. За 6 месяцев получила нужные навыки и нашла работу.",
+    position: "Бизнес-аналитик в IT-компании"
+  },
+  {
+    author: "Дмитрий Петров",
+    rating: 5,
+    date: "10.03.2024",
+    text: "Формат обучения очень удобный. Особенно понравились практические задания на реальных кейсах. Рекомендую!",
+    position: "Руководитель отдела аналитики"
+  },
+  {
+    author: "Елена Козлова",
+    rating: 5,
+    date: "05.03.2024",
+    text: "Перешла из маркетинга в аналитику благодаря этому курсу. ИИ-наставник помог составить индивидуальный план обучения.",
+    position: "Продуктовый аналитик"
+  }
+];
+---
+
+<section class="reviews">
+  <div class="container">
+    <h2>Отзывы выпускников</h2>
+    <div class="reviews-slider">
+      {reviews.map(review => (
+        <div class="review-card">
+          <div class="review-header">
+            <div class="review-author">
+              <h3>{review.author}</h3>
+              <p class="position">{review.position}</p>
+            </div>
+            <div class="review-meta">
+              <div class="stars">
+                {Array(review.rating).fill('⭐').join('')}
+              </div>
+              <div class="date">{review.date}</div>
+            </div>
+          </div>
+          <p class="review-text">{review.text}</p>
+        </div>
+      ))}
+    </div>
+    <div class="reviews-actions">
+      <button class="btn" id="leaveReview">Оставить отзыв</button>
+      <button class="btn btn-secondary" id="writeDirector">Написать директору</button>
+    </div>
+  </div>
+</section>
+
+<div class="modal" id="reviewModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Оставить отзыв</h3>
+    <form id="reviewForm">
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="text" placeholder="Должность" required>
+      <div class="rating-select">
+        <label>Оценка:</label>
+        <div class="stars-input">
+          {Array(5).fill(0).map((_, i) => (
+            <input type="radio" name="rating" value={i + 1} required>
+          ))}
+        </div>
+      </div>
+      <textarea placeholder="Ваш отзыв" required></textarea>
+      <button type="submit" class="btn">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<div class="modal" id="directorModal">
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <h3>Написать директору</h3>
+    <form id="directorForm">
+      <input type="text" placeholder="Ваше имя" required>
+      <input type="email" placeholder="Ваш email" required>
+      <textarea placeholder="Ваше сообщение" required></textarea>
+      <button type="submit" class="btn">Отправить</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  .reviews {
+    padding: 6rem 0;
+    background: #1a1a1a;
+    overflow: hidden;
+  }
+
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 3rem;
+  }
+
+  .reviews-slider {
+    display: flex;
+    gap: 2rem;
+    animation: slide 30s linear infinite;
+  }
+
+  @keyframes slide {
+    0% {
+      transform: translateX(0);
+    }
+    100% {
+      transform: translateX(-100%);
+    }
+  }
+
+  .review-card {
+    flex: 0 0 400px;
+    background: rgb(var(--accent-dark));
+    border-radius: 12px;
+    padding: 2rem;
+  }
+
+  .review-header {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 1rem;
+  }
+
+  .review-author h3 {
+    color: white;
+    font-size: 1.25rem;
+    margin-bottom: 0.25rem;
+  }
+
+  .position {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+  }
+
+  .review-meta {
+    text-align: right;
+  }
+
+  .stars {
+    margin-bottom: 0.5rem;
+  }
+
+  .date {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+  }
+
+  .review-text {
+    color: #e4e4e7;
+    line-height: 1.6;
+  }
+
+  .reviews-actions {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    margin-top: 3rem;
+  }
+
+  .modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 1000;
+  }
+
+  .modal-content {
+    position: relative;
+    background: #1a1a1a;
+    max-width: 500px;
+    margin: 2rem auto;
+    padding: 2rem;
+    border-radius: 12px;
+  }
+
+  .close {
+    position: absolute;
+    right: 1rem;
+    top: 1rem;
+    color: white;
+    font-size: 1.5rem;
+    cursor: pointer;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+  }
+
+  input, textarea {
+    padding: 0.8rem;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(255, 255, 255, 0.05);
+    color: white;
+  }
+
+  .rating-select {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .stars-input {
+    display: flex;
+    gap: 0.5rem;
+  }
+
+  @media (max-width: 768px) {
+    .reviews {
+      padding: 4rem 0;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .review-card {
+      flex: 0 0 300px;
+    }
+
+    @keyframes slide {
+      0% {
+        transform: translateX(0);
+      }
+      100% {
+        transform: translateX(-200%);
+      }
+    }
+
+    .reviews-actions {
+      flex-direction: column;
+    }
+
+    .modal-content {
+      margin: 1rem;
+    }
+  }
+</style>
+
+<script>
+  const modals = {
+    review: document.getElementById('reviewModal'),
+    director: document.getElementById('directorModal')
+  };
+
+  const buttons = {
+    review: document.getElementById('leaveReview'),
+    director: document.getElementById('writeDirector')
+  };
+
+  const closeButtons = document.querySelectorAll('.close');
+  const forms = {
+    review: document.getElementById('reviewForm'),
+    director: document.getElementById('directorForm')
+  };
+
+  // Открытие модальных окон
+  buttons.review?.addEventListener('click', () => modals.review.style.display = 'block');
+  buttons.director?.addEventListener('click', () => modals.director.style.display = 'block');
+
+  // Закрытие модальных окон
+  closeButtons.forEach(button => {
+    button.addEventListener('click', () => {
+      modals.review.style.display = 'none';
+      modals.director.style.display = 'none';
+    });
+  });
+
+  // Обработка отправки форм
+  forms.review?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    await sendEmail('a777mmm@mail.ru', 'Новый отзыв', formData);
+    modals.review.style.display = 'none';
+  });
+
+  forms.director?.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const formData = new FormData(e.target);
+    await sendEmail('a777mmm@mail.ru', 'Сообщение директору', formData);
+    modals.director.style.display = 'none';
+  });
+
+  async function sendEmail(to, subject, formData) {
+    // Здесь должна быть реализация отправки email через ваш бэкенд
+    console.log('Отправка email:', { to, subject, formData });
+  }
+</script>

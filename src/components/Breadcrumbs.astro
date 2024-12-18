@@ -1,0 +1,79 @@
+---
+const { currentPage } = Astro.props;
+
+const pages = [
+  { name: 'Главная', path: '/' },
+  { name: 'Программа', path: '/program' },
+  { name: 'Вход', path: '/login' },
+  { name: 'Регистрация', path: '/register' },
+];
+
+const currentPath = new URL(Astro.request.url).pathname;
+const breadcrumbs = [pages[0]];
+
+if (currentPath !== '/') {
+  const matchingPage = pages.find(page => page.path === currentPath);
+  if (matchingPage) {
+    breadcrumbs.push(matchingPage);
+  }
+}
+---
+
+<nav class="breadcrumbs">
+  <div class="container">
+    {breadcrumbs.map((crumb, index) => (
+      <>
+        <a href={crumb.path} class={currentPath === crumb.path ? 'active' : ''}>
+          {crumb.name}
+        </a>
+        {index < breadcrumbs.length - 1 && <span class="separator">/</span>}
+      </>
+    ))}
+  </div>
+</nav>
+
+<style>
+  .breadcrumbs {
+    background: rgba(26, 26, 26, 0.95);
+    padding: 0.75rem 0;
+    position: fixed;
+    top: 70px;
+    left: 0;
+    right: 0;
+    z-index: 900;
+    backdrop-filter: blur(10px);
+  }
+
+  .container {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  a {
+    color: #a1a1aa;
+    text-decoration: none;
+    font-size: 0.9rem;
+    transition: color 0.3s ease;
+  }
+
+  a:hover {
+    color: white;
+  }
+
+  a.active {
+    color: rgb(var(--accent-light));
+    pointer-events: none;
+  }
+
+  .separator {
+    color: #a1a1aa;
+    margin: 0 0.25rem;
+  }
+
+  @media (max-width: 768px) {
+    .breadcrumbs {
+      top: 60px;
+    }
+  }
+</style>

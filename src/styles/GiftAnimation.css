@@ -1,0 +1,36 @@
+.gift-animation {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.gift {
+  font-size: 4rem;
+  animation: bounce 1s ease infinite;
+}
+
+.message {
+  margin-top: 1rem;
+  animation: fadeIn 0.5s ease;
+}
+
+.message h3 {
+  color: white;
+  margin-bottom: 0.5rem;
+}
+
+.message p {
+  color: #a1a1aa;
+}
+
+@keyframes bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}

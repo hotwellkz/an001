@@ -1,0 +1,32 @@
+{
+  "name": "@example/basics",
+  "type": "module",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview",
+    "astro": "astro"
+  },
+  "dependencies": {
+    "astro": "^4.15.3",
+    "@astrojs/react": "^3.0.10",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "firebase": "^10.8.0",
+    "zustand": "^4.5.1",
+    "@firebase/auth-types": "^0.12.0",
+    "lucide-react": "^0.344.0",
+    "openai": "^4.28.0",
+    "@anthropic-ai/sdk": "^0.17.1",
+    "elevenlabs-node": "^2.0.3"
+  },
+  "devDependencies": {
+    "@types/react": "^18.2.0",
+    "@types/react-dom": "^18.2.0",
+    "typescript": "^5.0.0",
+    "@types/firebase": "^3.2.1"
+  }
+}

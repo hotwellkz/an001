@@ -1,0 +1,107 @@
+---
+import Header from '../components/Header';
+import Footer from '../components/Footer.astro';
+import Breadcrumbs from '../components/Breadcrumbs.astro';
+
+interface Props {
+	title: string;
+	description: string;
+	showBreadcrumbs?: boolean;
+}
+
+const { title, description, showBreadcrumbs = true } = Astro.props;
+---
+
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="description" content={description} />
+		<meta name="viewport" content="width=device-width" />
+		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+		<link rel="preconnect" href="https://fonts.googleapis.com">
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+		<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+		<meta name="generator" content={Astro.generator} />
+		<meta name="keywords" content="курс бизнес аналитик, обучение бизнес аналитике, бизнес аналитик обучение, курсы бизнес аналитики" />
+		<meta property="og:title" content={title} />
+		<meta property="og:description" content={description} />
+		<meta property="og:type" content="website" />
+		<title>{title}</title>
+	</head>
+	<body>
+		<Header client:load />
+		{showBreadcrumbs && <Breadcrumbs currentPage={title} />}
+		<slot />
+		<Footer />
+	</body>
+</html>
+<style is:global>
+	:root {
+		--accent: 235, 47, 47;
+		--accent-light: 255, 99, 99;
+		--accent-dark: 28, 28, 28;
+		--accent-gradient: linear-gradient(
+			45deg,
+			rgb(var(--accent)),
+			rgb(var(--accent-light)) 30%,
+			white 60%
+		);
+	}
+	html {
+		font-family: 'Inter', sans-serif;
+		background: #13151a;
+		min-height: 100vh;
+	}
+	
+	body {
+		min-height: 100vh;
+		display: flex;
+		flex-direction: column;
+	}
+
+	code {
+		font-family:
+			Menlo,
+			Monaco,
+			Lucida Console,
+			Liberation Mono,
+			DejaVu Sans Mono,
+			Bitstream Vera Sans Mono,
+			Courier New,
+			monospace;
+	}
+	* {
+		margin: 0;
+		padding: 0;
+		box-sizing: border-box;
+	}
+	@media (max-width: 768px) {
+		html {
+			font-size: 14px;
+		}
+	}
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 1rem;
+	}
+	.btn {
+		background: rgb(var(--accent));
+		color: white;
+		padding: 0.8rem 1.5rem;
+		border-radius: 8px;
+		text-decoration: none;
+		font-weight: 500;
+		transition: background 0.3s ease;
+	}
+	.btn:hover {
+		background: rgb(var(--accent-light));
+	}
+	#chat-root {
+		position: fixed;
+		bottom: 0;
+		right: 0;
+		z-index: 1000;
+	}
+</style>

@@ -1,0 +1,185 @@
+---
+const currentYear = new Date().getFullYear();
+
+const links = {
+  platform: [
+    { text: "О платформе", href: "#about" },
+    { text: "Программа курса", href: "/program" },
+    { text: "Преимущества", href: "#benefits" },
+    { text: "Отзывы", href: "#reviews" },
+    { text: "FAQ", href: "#faq" }
+  ],
+  education: [
+    { text: "Программа обучения", href: "#program" },
+    { text: "Методика", href: "#methodology" },
+    { text: "Преподаватели", href: "#teachers" },
+    { text: "Карьера", href: "#career" }
+  ],
+  legal: [
+    { text: "Условия использования", href: "/terms" },
+    { text: "Политика конфиденциальности", href: "/privacy" },
+    { text: "Правила оплаты", href: "/payment" }
+  ]
+};
+---
+
+<footer class="footer">
+  <div class="container">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <a href="/" class="footer-logo">Бизнес Аналитик</a>
+        <p class="footer-description">
+          Обучение бизнес-аналитике с персональным ИИ-наставником
+        </p>
+      </div>
+
+      <div class="footer-links">
+        <div class="footer-section">
+          <h3>Платформа</h3>
+          <ul>
+            {links.platform.map(link => (
+              <li><a href={link.href}>{link.text}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Обучение</h3>
+          <ul>
+            {links.education.map(link => (
+              <li><a href={link.href}>{link.text}</a></li>
+            ))}
+          </ul>
+        </div>
+
+        <div class="footer-section">
+          <h3>Документы</h3>
+          <ul>
+            {links.legal.map(link => (
+              <li><a href={link.href}>{link.text}</a></li>
+            ))}
+          </ul>
+        </div>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <p>&copy; {currentYear} Бизнес Аналитик. Все права защищены.</p>
+    </div>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #1a1a1a;
+    padding: 4rem 0 2rem;
+    margin-top: auto;
+  }
+
+  .footer-content {
+    display: grid;
+    grid-template-columns: 1.5fr 2fr;
+    gap: 4rem;
+    margin-bottom: 3rem;
+  }
+
+  .footer-brand {
+    max-width: 300px;
+  }
+
+  .footer-logo {
+    color: white;
+    font-size: 1.5rem;
+    font-weight: 700;
+    text-decoration: none;
+    margin-bottom: 1rem;
+    display: block;
+  }
+
+  .footer-description {
+    color: #a1a1aa;
+    line-height: 1.6;
+  }
+
+  .footer-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+  }
+
+  .footer-section h3 {
+    color: white;
+    font-size: 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+
+  .footer-section ul {
+    list-style: none;
+  }
+
+  .footer-section li {
+    margin-bottom: 0.8rem;
+  }
+
+  .footer-section a {
+    color: #a1a1aa;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .footer-section a:hover {
+    color: rgb(var(--accent-light));
+  }
+
+  .footer-bottom {
+    padding-top: 2rem;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    text-align: center;
+  }
+
+  .footer-bottom p {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 1024px) {
+    .footer-content {
+      grid-template-columns: 1fr 2fr;
+      gap: 3rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .footer {
+      padding: 3rem 0 1.5rem;
+    }
+
+    .footer-content {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+    }
+
+    .footer-brand {
+      max-width: 100%;
+      text-align: center;
+    }
+
+    .footer-links {
+      grid-template-columns: 1fr;
+      gap: 2rem;
+      text-align: center;
+    }
+
+    .footer-section {
+      margin-bottom: 1rem;
+    }
+
+    .footer-section h3 {
+      margin-bottom: 1rem;
+    }
+
+    .footer-section li {
+      margin-bottom: 0.6rem;
+    }
+  }
+</style>

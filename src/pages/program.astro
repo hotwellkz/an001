@@ -1,0 +1,274 @@
+---
+import Layout from '../layouts/Layout.astro';
+import { courseModules } from '../data/courseProgram';
+
+const pageTitle = "Программа курса | Бизнес Аналитик";
+const pageDescription = "Подробная программа обучения профессии бизнес-аналитика. 5 модулей с практическими заданиями и поддержкой ИИ-наставника.";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="program-page">
+    <section class="hero">
+      <div class="container">
+        <h1>Программа курса</h1>
+        <p class="subtitle">Станьте бизнес-аналитиком за 6 месяцев</p>
+      </div>
+    </section>
+
+    <section class="program">
+      <div class="container">
+        <div class="modules">
+          {courseModules.map((module, moduleIndex) => (
+            <div class="module">
+              <h2>
+                <span class="module-number">Модуль {moduleIndex + 1}:</span>
+                {module.title}
+              </h2>
+              <div class="lessons">
+                {module.lessons.map((lesson, lessonIndex) => (
+                  <details class="lesson">
+                    <summary>
+                      <span class="lesson-number">{moduleIndex + 1}.{lessonIndex + 1}</span>
+                      {lesson.title}
+                    </summary>
+                    <div class="lesson-content">
+                      <ul>
+                        {lesson.topics.map(topic => (
+                          <li>{topic}</li>
+                        ))}
+                      </ul>
+                      {lesson.test && (
+                        <div class="test-info">
+                          <span class="test-icon">📝</span>
+                          {lesson.test}
+                        </div>
+                      )}
+                    </div>
+                  </details>
+                ))}
+              </div>
+            </div>
+          ))}
+        </div>
+
+        <div class="program-cta">
+          <h3>Готовы начать обучение?</h3>
+          <p>Получите консультацию по программе и узнайте, как начать обучение</p>
+          <a href="#start" class="btn btn-primary">Начать обучение</a>
+        </div>
+      </div>
+    </section>
+  </main>
+</Layout>
+
+<style>
+  .program-page {
+    padding-top: 80px;
+  }
+
+  .hero {
+    background: linear-gradient(135deg, rgb(var(--accent-dark)) 0%, #1a1a1a 100%);
+    padding: 4rem 0;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/grid.svg') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  h1 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    position: relative;
+  }
+
+  .subtitle {
+    color: #a1a1aa;
+    font-size: 1.25rem;
+    max-width: 600px;
+    margin: 0 auto;
+  }
+
+  .program {
+    padding: 4rem 0;
+    background: #13151a;
+  }
+
+  .modules {
+    display: grid;
+    gap: 2rem;
+    margin-bottom: 4rem;
+  }
+
+  .module {
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+    padding: 2rem;
+    transition: transform 0.3s ease;
+  }
+
+  .module:hover {
+    transform: translateY(-2px);
+  }
+
+  .module h2 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .module-number {
+    color: rgb(var(--accent));
+    font-weight: 600;
+  }
+
+  .lessons {
+    display: grid;
+    gap: 1rem;
+  }
+
+  .lesson {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+  }
+
+  .lesson summary {
+    padding: 1rem;
+    cursor: pointer;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    user-select: none;
+  }
+
+  .lesson summary::-webkit-details-marker {
+    display: none;
+  }
+
+  .lesson-number {
+    color: rgb(var(--accent-light));
+    font-weight: 500;
+  }
+
+  .lesson-content {
+    padding: 1rem;
+    padding-top: 0;
+    color: #a1a1aa;
+  }
+
+  .lesson-content ul {
+    list-style-type: none;
+    padding-left: 1.5rem;
+  }
+
+  .lesson-content li {
+    position: relative;
+    margin-bottom: 0.5rem;
+  }
+
+  .lesson-content li::before {
+    content: '•';
+    color: rgb(var(--accent));
+    position: absolute;
+    left: -1rem;
+  }
+
+  .test-info {
+    margin-top: 1rem;
+    padding: 0.75rem;
+    background: rgba(var(--accent), 0.1);
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
+
+  .test-icon {
+    font-size: 1.2rem;
+  }
+
+  .program-cta {
+    text-align: center;
+    padding: 3rem;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 12px;
+  }
+
+  .program-cta h3 {
+    color: white;
+    font-size: 1.75rem;
+    margin-bottom: 1rem;
+  }
+
+  .program-cta p {
+    color: #a1a1aa;
+    margin-bottom: 1.5rem;
+  }
+
+  @media (max-width: 1024px) {
+    .hero {
+      padding: 3rem 0;
+    }
+
+    h1 {
+      font-size: 2.5rem;
+    }
+
+    .module {
+      padding: 1.5rem;
+    }
+  }
+
+  @media (max-width: 768px) {
+    .hero {
+      padding: 2rem 0;
+    }
+
+    h1 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+    }
+
+    .module {
+      padding: 1rem;
+    }
+
+    .module h2 {
+      font-size: 1.25rem;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.25rem;
+    }
+
+    .program-cta {
+      padding: 2rem 1rem;
+    }
+
+    .program-cta h3 {
+      font-size: 1.5rem;
+    }
+  }
+</style>
+
+<script>
+  // Scroll to top on page load
+  window.onload = () => window.scrollTo(0, 0);
+</script>

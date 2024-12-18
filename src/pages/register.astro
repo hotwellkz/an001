@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import RegisterForm from '../components/RegisterForm';
+
+const pageTitle = "Регистрация | Бизнес Аналитик";
+const pageDescription = "Зарегистрируйтесь для доступа к курсу бизнес-аналитики с ИИ-наставником";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="auth-page">
+    <div class="auth-container">
+      <h1>Регистрация</h1>
+      <RegisterForm client:load />
+      <p class="auth-redirect">
+        Уже есть аккаунт? <a href="/login">Войти</a>
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .auth-page {
+    min-height: 100vh;
+    padding: 120px 1rem;
+    background: linear-gradient(135deg, rgb(var(--accent-dark)) 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .auth-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .auth-redirect {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #a1a1aa;
+  }
+
+  .auth-redirect a {
+    color: rgb(var(--accent-light));
+    text-decoration: none;
+  }
+
+  .auth-redirect a:hover {
+    text-decoration: underline;
+  }
+</style>

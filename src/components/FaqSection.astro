@@ -1,0 +1,105 @@
+---
+const faqs = [
+  {
+    question: "Нужен ли начальный опыт?",
+    answer: "Нет, курс подходит для новичков. ИИ-наставник адаптирует программу под ваш уровень."
+  },
+  {
+    question: "Сколько времени занимает обучение?",
+    answer: "В среднем 6 месяцев при занятиях 2-3 часа в день. Темп можно регулировать."
+  },
+  {
+    question: "Как проходит обучение?",
+    answer: "Онлайн-формат с доступом к материалам 24/7, практические задания и поддержка ИИ-наставника."
+  },
+  {
+    question: "Поможете с трудоустройством?",
+    answer: "Да, мы помогаем составить резюме и готовим к собеседованиям."
+  },
+  {
+    question: "Какие документы я получу?",
+    answer: "Сертификат о прохождении курса и портфолио с реальными проектами."
+  }
+];
+---
+
+<section class="faq">
+  <div class="container">
+    <h2>Топ 10 вопросов</h2>
+    <div class="faq-grid">
+      {faqs.map((faq, index) => (
+        <details class="faq-item">
+          <summary>{faq.question}</summary>
+          <p>{faq.answer}</p>
+        </details>
+      ))}
+    </div>
+  </div>
+</section>
+
+<style>
+  .faq {
+    padding: 6rem 0;
+    background: #1a1a1a;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 3rem;
+  }
+  
+  .faq-grid {
+    max-width: 800px;
+    margin: 0 auto;
+    display: grid;
+    gap: 1rem;
+  }
+  
+  .faq-item {
+    background: rgb(var(--accent-dark));
+    border-radius: 8px;
+    padding: 0.5rem;
+  }
+  
+  summary {
+    padding: 1rem;
+    color: white;
+    font-weight: 500;
+    cursor: pointer;
+    list-style: none;
+    position: relative;
+  }
+  
+  summary::-webkit-details-marker {
+    display: none;
+  }
+  
+  summary::after {
+    content: '+';
+    position: absolute;
+    right: 1rem;
+    transition: transform 0.3s ease;
+  }
+  
+  details[open] summary::after {
+    transform: rotate(45deg);
+  }
+  
+  .faq-item p {
+    padding: 1rem;
+    color: #a1a1aa;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  @media (max-width: 768px) {
+    .faq {
+      padding: 4rem 0;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+  }
+</style>

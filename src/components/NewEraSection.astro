@@ -1,0 +1,81 @@
+---
+---
+<section class="new-era">
+  <div class="container">
+    <h2>Новая эра обучения</h2>
+    <div class="new-era-grid">
+      <div class="new-era-item">
+        <div class="icon">🤖</div>
+        <h3>ИИ-наставник</h3>
+        <p>Персональный помощник, доступный 24/7, адаптирует программу под ваш темп обучения</p>
+      </div>
+      <div class="new-era-item">
+        <div class="icon">📊</div>
+        <h3>Интерактивные задания</h3>
+        <p>Практические кейсы с автоматической проверкой и мгновенной обратной связью</p>
+      </div>
+      <div class="new-era-item">
+        <div class="icon">🎯</div>
+        <h3>Индивидуальная траектория</h3>
+        <p>Программа обучения подстраивается под ваши цели и уровень подготовки</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .new-era {
+    padding: 6rem 0;
+    background: #1a1a1a;
+  }
+  
+  h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 3rem;
+  }
+  
+  .new-era-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 2rem;
+  }
+  
+  .new-era-item {
+    padding: 2rem;
+    background: rgb(var(--accent-dark));
+    border-radius: 12px;
+    transition: transform 0.3s ease;
+  }
+  
+  .new-era-item:hover {
+    transform: translateY(-5px);
+  }
+  
+  .icon {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  h3 {
+    color: white;
+    font-size: 1.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  p {
+    color: #a1a1aa;
+    line-height: 1.6;
+  }
+  
+  @media (max-width: 768px) {
+    .new-era {
+      padding: 4rem 0;
+    }
+    
+    h2 {
+      font-size: 2rem;
+    }
+  }
+</style>

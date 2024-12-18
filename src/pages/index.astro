@@ -1,0 +1,146 @@
+---
+import Layout from '../layouts/Layout.astro';
+import Card from '../components/Card.astro';
+import NewEraSection from '../components/NewEraSection.astro';
+import EnrollSection from '../components/EnrollSection.astro';
+import FaqSection from '../components/FaqSection.astro';
+import ForWhomSection from '../components/ForWhomSection.astro';
+import ReviewsSection from '../components/ReviewsSection.astro';
+import CtaSection from '../components/CtaSection.astro';
+import AIChat from '../components/AIChat';
+
+const features = [
+	{
+		title: "Персональный ИИ-наставник",
+		description: "Индивидуальное обучение с поддержкой искусственного интеллекта 24/7"
+	},
+	{
+		title: "Практические кейсы",
+		description: "Реальные проекты от ведущих компаний для вашего портфолио"
+	},
+	{
+		title: "Карьерное сопровождение",
+		description: "Помощь в трудоустройстве и составлении резюме"
+	},
+	{
+		title: "Современные инструменты",
+		description: "Обучение актуальным инструментам бизнес-анализа"
+	}
+];
+---
+
+<Layout 
+	title="Курс Бизнес Аналитик с ИИ | Обучение с персональным наставником"
+	description="Станьте востребованным бизнес-аналитиком с помощью персонального ИИ-наставника. Практические навыки, реальные проекты, трудоустройство."
+	showBreadcrumbs={false}
+>
+	<main>
+		<section class="hero">
+			<div class="container">
+				<h1>Станьте бизнес-аналитиком с персональным <span class="text-gradient">ИИ-наставником</span></h1>
+				<p class="hero-description">
+					Освойте профессию бизнес-аналитика с поддержкой искусственного интеллекта. 
+					Получите практические навыки и начните карьеру в аналитике уже через 6 месяцев.
+				</p>
+				<div class="hero-buttons">
+					<a href="#program" class="btn">Начать обучение</a>
+					<a href="#demo" class="btn btn-secondary">Попробовать бесплатно</a>
+				</div>
+			</div>
+		</section>
+
+		<section id="features" class="features">
+			<div class="container">
+				<h2>Преимущества курса</h2>
+				<div class="features-grid">
+					{features.map(feature => (
+						<Card
+							href="#"
+							title={feature.title}
+							body={feature.description}
+						/>
+					))}
+				</div>
+			</div>
+		</section>
+		
+		<NewEraSection />
+		<ForWhomSection />
+		<EnrollSection />
+		<ReviewsSection />
+		<CtaSection />
+		<FaqSection />
+		<AIChat client:load />
+	</main>
+</Layout>
+
+<style>
+	.hero {
+		padding: 6rem 0;
+		text-align: center;
+	}
+	h1 {
+		font-size: 3.5rem;
+		font-weight: 700;
+		line-height: 1.2;
+		margin-bottom: 1.5rem;
+		color: white;
+	}
+	.hero-description {
+		font-size: 1.25rem;
+		color: #a1a1aa;
+		max-width: 800px;
+		margin: 0 auto 2rem;
+	}
+	.text-gradient {
+		background-image: var(--accent-gradient);
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		background-size: 400%;
+		background-position: 0%;
+	}
+	.hero-buttons {
+		display: flex;
+		gap: 1rem;
+		justify-content: center;
+		align-items: center;
+	}
+	.btn-secondary {
+		background: transparent;
+		border: 1px solid rgb(var(--accent));
+	}
+	.btn-secondary:hover {
+		background: rgba(var(--accent), 0.1);
+	}
+	.features {
+		padding: 4rem 0;
+		background: rgb(var(--accent-dark));
+	}
+	.features h2 {
+		text-align: center;
+		font-size: 2.5rem;
+		color: white;
+		margin-bottom: 3rem;
+	}
+	.features-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+		gap: 2rem;
+	}
+	@media (max-width: 768px) {
+		h1 {
+			font-size: 2.5rem;
+		}
+		.hero {
+			padding: 4rem 0;
+		}
+		.hero-buttons {
+			flex-direction: column;
+			width: 100%;
+		}
+		.btn {
+			width: 100%;
+			text-align: center;
+		}
+	}
+</style>

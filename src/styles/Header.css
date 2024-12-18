@@ -1,0 +1,203 @@
+.header {
+  background: rgba(26, 26, 26, 0.95);
+  -webkit-backdrop-filter: blur(10px);
+  backdrop-filter: blur(10px);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  padding: 1rem 0;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.mobile-menu-button {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.logo {
+  color: white;
+  font-size: 1.5rem;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.nav-links {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.nav-link {
+  color: #a1a1aa;
+  text-decoration: none;
+  transition: color 0.3s ease;
+  font-weight: 500;
+}
+
+.nav-link:hover {
+  color: white;
+}
+
+.btn-primary,
+.btn-secondary {
+  display: flex;
+  height: 40px;
+  padding: 0 1.25rem;
+  white-space: nowrap;
+  align-items: center;
+  justify-content: center;
+  min-width: 100px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  border-radius: 8px;
+  margin: 0;
+}
+
+.btn-primary {
+  background: rgb(var(--accent));
+  color: white;
+  border: none;
+  box-shadow: 0 2px 4px rgba(var(--accent), 0.2);
+}
+
+.btn-primary:hover {
+  background: rgb(var(--accent-light));
+  transform: translateY(-1px);
+  box-shadow: 0 4px 8px rgba(var(--accent), 0.3);
+}
+
+.btn-secondary {
+  background: transparent;
+  border: 1px solid rgb(var(--accent));
+  color: white;
+  position: relative;
+  overflow: hidden;
+}
+
+.btn-secondary:hover {
+  border-color: rgb(var(--accent-light));
+  color: rgb(var(--accent-light));
+  background: rgba(var(--accent), 0.05);
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .nav-header {
+    padding: 0 1.5rem;
+  }
+
+  .logo {
+    font-size: 1.3rem;
+  }
+  
+  .nav-links {
+    gap: 1rem;
+  }
+
+  .btn-primary,
+  .btn-secondary {
+    padding: 0 1.25rem;
+    min-width: 100px;
+  }
+}
+
+.tokens {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+}
+
+.token-icon {
+  font-size: 1.2rem;
+}
+
+.token-amount {
+  color: white;
+  font-weight: 500;
+}
+
+@media (max-width: 768px) {
+  .header {
+    padding: 1rem 0;
+  }
+
+  .nav-header {
+    padding: 0 1rem;
+    position: relative;
+  }
+
+  .logo {
+    font-size: 1.2rem;
+  }
+  
+  .btn {
+    width: 100%;
+    justify-content: center;
+  }
+  
+  .mobile-menu-button {
+    display: block;
+    z-index: 1001;
+    margin-left: auto;
+  }
+  
+  .nav-links {
+    position: fixed;
+    top: 0;
+    right: -100%;
+    bottom: 0;
+    width: 85%;
+    max-width: 300px;
+    background: #1a1a1a;
+    padding: 5rem 1.5rem 2rem;
+    flex-direction: column;
+    align-items: stretch;
+    transition: right 0.3s ease;
+    z-index: 1000;
+    overflow-y: auto;
+    gap: 1rem;
+  }
+  
+  .nav-links > * {
+    width: 100%;
+  }
+
+  .nav-links.active {
+    right: 0;
+  }
+  
+  .mobile-close {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: -1;
+    display: none;
+  }
+  
+  .nav-links.active .mobile-close {
+    display: block;
+  }
+}

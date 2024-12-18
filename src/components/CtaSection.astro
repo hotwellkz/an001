@@ -1,0 +1,194 @@
+---
+---
+<section class="cta">
+  <div class="container">
+    <div class="cta-content">
+      <h2>Начните обучение бесплатно</h2>
+      <p class="subtitle">Попробуйте первую неделю без оплаты и убедитесь в эффективности нашей методики</p>
+      
+      <div class="benefits">
+        <div class="benefit-item">
+          <div class="benefit-icon">🎯</div>
+          <p>Доступ к первому модулю</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">🤖</div>
+          <p>Знакомство с ИИ-наставником</p>
+        </div>
+        <div class="benefit-item">
+          <div class="benefit-icon">📚</div>
+          <p>Практическое задание</p>
+        </div>
+      </div>
+
+      <div class="cta-buttons">
+        <a href="#start" class="btn btn-primary">Начать бесплатно</a>
+        <p class="guarantee">Без скрытых платежей</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<style>
+  .cta {
+    padding: 6rem 0;
+    background: linear-gradient(135deg, rgb(var(--accent-dark)) 0%, #1a1a1a 100%);
+    position: relative;
+    overflow: hidden;
+  }
+
+  @media (min-width: 769px) and (max-width: 1024px) {
+    .cta {
+      padding: 5rem 0;
+    }
+
+    .cta-content {
+      max-width: 90%;
+      padding: 0 2rem;
+    }
+
+    h2 {
+      font-size: 2.5rem;
+    }
+
+    .benefits {
+      gap: 1.5rem;
+    }
+  }
+
+  .cta::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: url('/grid.svg') center/cover;
+    opacity: 0.1;
+    pointer-events: none;
+  }
+
+  .cta-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+  }
+
+  h2 {
+    font-size: 3rem;
+    color: white;
+    margin-bottom: 1rem;
+    background: linear-gradient(135deg, #fff 0%, #f0f0f0 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
+
+  .subtitle {
+    font-size: 1.25rem;
+    color: #a1a1aa;
+    margin-bottom: 3rem;
+  }
+
+  .benefits {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 2rem;
+    margin-bottom: 3rem;
+  }
+
+  .benefit-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .benefit-icon {
+    font-size: 2.5rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .benefit-item p {
+    color: #e4e4e7;
+    font-size: 1.1rem;
+  }
+
+  .cta-buttons {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1rem;
+  }
+
+  .btn-primary {
+    font-size: 1.25rem;
+    padding: 1rem 2.5rem;
+    background: rgb(var(--accent));
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    border: none;
+  }
+
+  .btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 20px rgba(var(--accent), 0.4);
+  }
+
+  .guarantee {
+    color: #a1a1aa;
+    font-size: 0.9rem;
+  }
+
+  @media (max-width: 768px) {
+    .cta {
+      padding: 4rem 0;
+    }
+
+    .cta-content {
+      max-width: 100%;
+      padding: 0 1rem;
+    }
+
+    h2 {
+      font-size: 2rem;
+    }
+
+    .subtitle {
+      font-size: 1.1rem;
+      margin-bottom: 2rem;
+    }
+
+    .benefits {
+      grid-template-columns: 1fr;
+      gap: 1.5rem;
+      margin-bottom: 2rem;
+    }
+
+    .benefit-item {
+      flex-direction: row;
+      justify-content: center;
+      text-align: left;
+      padding: 1rem;
+    }
+
+    .benefit-icon {
+      font-size: 2rem;
+      margin-bottom: 0;
+      margin-right: 1rem;
+    }
+
+    .cta-buttons {
+      flex-direction: column;
+      align-items: stretch;
+    }
+
+    .btn-primary {
+      width: 100%;
+      text-align: center;
+    }
+  }
+</style>

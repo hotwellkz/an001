@@ -1,0 +1,61 @@
+---
+import Layout from '../layouts/Layout.astro';
+import LoginForm from '../components/LoginForm';
+
+const pageTitle = "Вход | Бизнес Аналитик";
+const pageDescription = "Войдите в свой аккаунт для доступа к курсу бизнес-аналитики";
+---
+
+<Layout title={pageTitle} description={pageDescription}>
+  <main class="auth-page">
+    <div class="auth-container">
+      <h1>Вход в аккаунт</h1>
+      <LoginForm client:load />
+      <p class="auth-redirect">
+        Нет аккаунта? <a href="/register">Зарегистрироваться</a>
+      </p>
+    </div>
+  </main>
+</Layout>
+
+<style>
+  .auth-page {
+    min-height: 100vh;
+    padding: 120px 1rem;
+    background: linear-gradient(135deg, rgb(var(--accent-dark)) 0%, #1a1a1a 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .auth-container {
+    background: rgba(255, 255, 255, 0.05);
+    padding: 2rem;
+    border-radius: 12px;
+    width: 100%;
+    max-width: 400px;
+    backdrop-filter: blur(10px);
+  }
+
+  h1 {
+    color: white;
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+  }
+
+  .auth-redirect {
+    text-align: center;
+    margin-top: 1.5rem;
+    color: #a1a1aa;
+  }
+
+  .auth-redirect a {
+    color: rgb(var(--accent-light));
+    text-decoration: none;
+  }
+
+  .auth-redirect a:hover {
+    text-decoration: underline;
+  }
+</style>
